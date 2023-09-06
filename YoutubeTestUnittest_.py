@@ -17,11 +17,16 @@ class YoutubeTest(unittest.TestCase):
         self.driver.get("https://www.youtube.com/")
 
     def test_test(self):
+        searchingKeword = "selenium"
         # type in selenium at youtube search field and push search button
         searchFieldElement = self.driver.find_element(By.CSS_SELECTOR, "[name='search_query']")
         searchFieldElement.click()
-        searchFieldElement.send_keys("selenium")
+        searchFieldElement.send_keys(searchingKeword)
         searchFieldElement.send_keys(Keys.RETURN)
+
+        # assert title of page
+        time.sleep(2)
+        self.assertEqual(f"{searchingKeword + ' - YouTube'}", self.driver.title)
 
         # find first video from list and click on it
         firstPlaceholder = self.driver.find_element(By.ID, "title-wrapper")
