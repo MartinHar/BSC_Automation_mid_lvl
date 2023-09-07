@@ -11,6 +11,7 @@ import unittest
 
 class YoutubeTest(unittest.TestCase):
     def setUp(self) -> None:
+        # setup the driver
         self.driver = webdriver.Chrome()
         self.driver.delete_all_cookies()
         self.driver.maximize_window()
